@@ -1,5 +1,6 @@
 import React from 'react';
 import MiniDrawer from './MiniDrawer';
+import SimpleMap from './SimpleMap';
 
 
 // import RadioButtonsGroup from './RadioButtonsGroup';
@@ -14,6 +15,7 @@ class App extends React.Component {
     return (
       <MiniDrawer>
         <div>
+        <SimpleMap/>
         </div>
       </MiniDrawer>
     );

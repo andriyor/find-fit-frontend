@@ -3,6 +3,8 @@ import MiniDrawer from './MiniDrawer';
 import SimpleMap from './SimpleMap';
 import ControlledOpenSelect from './ControlledOpenSelect';
 import DateAndTimePickers from './DateAndTimePickers'
+import InputAdornments from './InputAdornments'
+import LoginAuthorization from './LoginAuthorization'
 
 
 import { connect } from 'react-redux'
@@ -20,14 +22,21 @@ class App extends React.Component {
     return (
       <MiniDrawer>
         <div>
-            <div style={{display: 'flex', color: 'red'}}>
+            <div style={{position: 'absolute', marginTop: '100px', marginLeft: '30px', background: 'white', zIndex: '999999', maxWidth: '215px', padding: '20px 30px'}}>
+                <div style={{fontSize: '20pt'}}>Create your event</div>
+                <InputAdornments/>
+                <DateAndTimePickers style={{marginLeft: '20px'}}/>
+            </div>
+            <div style={{display: 'flex'}}>
                 <ControlledOpenSelect title='Age' items={ages}/>
                 <ControlledOpenSelect title='Sex' items={sex}/>
                 <DateAndTimePickers label='Start'/>
                 <DateAndTimePickers label='End'/>
             </div>
+
         <SimpleMap/>
         </div>
+          <LoginAuthorization />
       </MiniDrawer>
     );
   }

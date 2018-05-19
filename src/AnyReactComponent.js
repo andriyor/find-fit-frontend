@@ -12,7 +12,7 @@ class AnyReactComponent extends React.Component {
             return (
                 <div>{text}<LocationOn onClick={this.handleClick}/></div>
             );
-        }
+    }
 }
 
 export default AnyReactComponent

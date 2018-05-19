@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
-import LocationOn from '@material-ui/icons/LocationOn';
-
-const AnyReactComponent = ({ text }) => <div>{text}<LocationOn /></div>;
+import AnyReactComponent from './AnyReactComponent'
+// const AnyReactComponent = ({ text }) => <div>{text}<LocationOn /></div>;
 
 class SimpleMap extends Component {
   static defaultProps = {

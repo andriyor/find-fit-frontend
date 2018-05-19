@@ -12,6 +12,8 @@ import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import Button from '@material-ui/core/Button';
 
+import axios from 'axios';
+
 const styles = theme => ({
     root: {
         display: 'flex',
@@ -28,10 +30,12 @@ const styles = theme => ({
     },
 });
 
+const api = 'https://5dab894d.ngrok.io';
 
 class LoginAuthorization extends React.Component {
     state = {
         password: '',
+        name: '',
         showPassword: false,
     };
 
@@ -47,6 +51,19 @@ class LoginAuthorization extends React.Component {
         this.setState({ showPassword: !this.state.showPassword });
     };
 
+    handleSubmit = () => {
+        axios.post('/api/login', {
+            name: this.state.name,
+          })
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+        console.log(this.state.password, this.state.name)
+    }
+
     render() {
         const { classes } = this.props;
 
@@ -56,6 +73,7 @@ class LoginAuthorization extends React.Component {
                     label="Enter name"
                     id="simple-start-adornment"
                     className={classNames(classes.margin, classes.textField)}
+                    onChange={this.handleChange('name')}
                     InputProps={{
                         startAdornment: <InputAdornment position="start" style={{width: '150px'}}>John Smith</InputAdornment>,
                     }}
@@ -79,7 +97,7 @@ class LoginAuthorization extends React.Component {
                             </InputAdornment>
                         }
                     />
-                    <Button variant="raised" className={classes.button}>
+                    <Button variant="raised" onClick={this.handleSubmit} className={classes.button}>
                         Default
                     </Button>
                 </FormControl>

@@ -6,10 +6,8 @@ import IconButton from '@material-ui/core/IconButton';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import InputAdornment from '@material-ui/core/InputAdornment';
-import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
-import MenuItem from '@material-ui/core/MenuItem';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import Button from '@material-ui/core/Button';
@@ -30,27 +28,10 @@ const styles = theme => ({
     },
 });
 
-const ranges = [
-    {
-        value: '0-20',
-        label: '0 to 20',
-    },
-    {
-        value: '21-50',
-        label: '21 to 50',
-    },
-    {
-        value: '51-100',
-        label: '51 to 100',
-    },
-];
 
 class LoginAuthorization extends React.Component {
     state = {
-        amount: '',
         password: '',
-        weight: '',
-        weightRange: '',
         showPassword: false,
     };
 

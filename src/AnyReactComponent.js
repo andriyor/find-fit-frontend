@@ -8,7 +8,7 @@ class AnyReactComponent extends React.Component {
             return (
                 <div>{text}<LocationOn /></div>
             );
-        }
+    }
 }
 
 export default AnyReactComponent

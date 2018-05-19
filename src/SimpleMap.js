@@ -1,31 +1,34 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
+import LocationOn from '@material-ui/icons/LocationOn';
 
-const AnyReactComponent = ({ text }) => <div>{text}</div>;
+const AnyReactComponent = ({ text }) => <div>{text}<LocationOn /></div>;
 
 class SimpleMap extends Component {
   static defaultProps = {
     center: {
-      lat: 59.95,
-      lng: 30.33
+      lat: 49.43,
+      lng: 32.06
     },
-    zoom: 11
+    zoom: 13
   };
-
+ 
   render() {
+    const user ={place :[
+      {id: 1, lat:  49.432214, lng: 32.057925, eventname: 'ev1'},
+      {id: 2, lat: 49.428038, lng: 32.088534, eventname: 'ev2'}
+    ]};
+
+    const markers = user.place.map(obj =><AnyReactComponent key={obj.id} lat={obj.lat} lng={obj.lng} text={obj.eventname}/> )
+
     return (
-      // Important! Always set the container height explicitly
       <div style={{ height: '100vh', width: '100%' }}>
         <GoogleMapReact
           bootstrapURLKeys={{ key: 'AIzaSyAM4Tk6tRekMBjmfK3Zf0OIePc0TIAgae4' }}
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}
         >
-          <AnyReactComponent
-            lat={59.955413}
-            lng={30.337844}
-            text={'Kreyser Avrora'}
-          />
+        {markers}
         </GoogleMapReact>
       </div>
     );

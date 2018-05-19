@@ -14,12 +14,18 @@ import { connect } from 'react-redux'
 class App extends React.Component {
   render() {
 
+    const ages = [{key: 1, value: 10, text: 'Ten-twenty'}, 
+                  {key: 2, value: 20, text: 'Twenty-thirty'}, 
+                  {key: 3, value: 30, text: 'Ten-twenty'}];
+
+    const sex = [{key: 1, value: 1, text: 'male'}, {key: 2, value: 2, text: 'female'}]
+
     return (
       <MiniDrawer>
         <div>
             <div style={{display: 'flex', color: 'red'}}>
-                <ControlledOpenSelect title='Age'/>
-                <ControlledOpenSelect title='Sex'/>
+                <ControlledOpenSelect title='Age' items={ages}/>
+                <ControlledOpenSelect title='Sex' items={sex}/>
                 <DateAndTimePickers label='Start'/>
                 <DateAndTimePickers label='End'/>
             </div>

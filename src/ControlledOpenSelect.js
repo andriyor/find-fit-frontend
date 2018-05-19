@@ -37,8 +37,9 @@ class ControlledOpenSelect extends React.Component {
     };
 
     render() {
-        const { classes } = this.props;
-
+        const { classes, items } = this.props;
+        const menuitems = items.map(obj => <MenuItem key={obj.key} value={obj.value}> {obj.text} </MenuItem> )
+        
         return (
             <form autoComplete="off">
 
@@ -58,9 +59,7 @@ class ControlledOpenSelect extends React.Component {
                         <MenuItem value="">
                             <em>None</em>
                         </MenuItem>
-                        <MenuItem value={10}>Ten-twenty</MenuItem>
-                        <MenuItem value={20}>Twenty-thirty</MenuItem>
-                        <MenuItem value={30}>Thirty+</MenuItem>
+                        {menuitems}
                     </Select>
                 </FormControl>
             </form>

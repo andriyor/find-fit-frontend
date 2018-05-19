@@ -1,6 +1,8 @@
 import React from 'react';
 import MiniDrawer from './MiniDrawer';
 import SimpleMap from './SimpleMap';
+import ControlledOpenSelect from './ControlledOpenSelect';
+import DateAndTimePickers from './DateAndTimePickers'
 
 
 // import RadioButtonsGroup from './RadioButtonsGroup';
@@ -15,6 +17,12 @@ class App extends React.Component {
     return (
       <MiniDrawer>
         <div>
+            <div style={{display: 'flex', color: 'red'}}>
+                <ControlledOpenSelect title='Age'/>
+                <ControlledOpenSelect title='Sex'/>
+                <DateAndTimePickers label='Start'/>
+                <DateAndTimePickers label='End'/>
+            </div>
         <SimpleMap/>
         </div>
       </MiniDrawer>

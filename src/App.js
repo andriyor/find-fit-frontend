@@ -5,9 +5,6 @@ import ControlledOpenSelect from './ControlledOpenSelect';
 import DateAndTimePickers from './DateAndTimePickers'
 
 
-// import RadioButtonsGroup from './RadioButtonsGroup';
-// import LoginButtons from './LoginButtons';
-
 import { connect } from 'react-redux'
 
 

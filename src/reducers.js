@@ -5,6 +5,7 @@ import {
   SET_YOUTUBE_ID,
   SET_LYRICS_PROVIDER,
   SET_BROADCAST_PROVIDER,
+  ADD_PLACE,
   BroadcastProvider,
   LyricsProvider
 } from './actions';
@@ -50,8 +51,23 @@ function additionInformation(state = {youtube: false, discogs: true}, action) {
   }
 }
 
+const placesl =[
+  {id: 1, lat:  49.432214, lng: 32.057925, eventname: 'ev1'},
+  {id: 2, lat: 49.428038, lng: 32.088534, eventname: 'ev2'}
+];
+
+
+function places(state = placesl, action) {
+  switch (action.type) {
+    case ADD_PLACE:
+      return [...state, action.place ]
+    default:
+      return state
+  }
+}
+
 const LLApp = combineReducers({
-    
+  places
 })
 
 export default LLApp

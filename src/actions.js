@@ -3,6 +3,7 @@ export const TOGGLE_DISCOGS = 'TOGGLE_DISCOGS';
 export const SET_YOUTUBE_ID = 'SET_YOUTUBE_ID';
 export const SET_LYRICS_PROVIDER = 'SET_LYRICS_PROVIDER';
 export const SET_BROADCAST_PROVIDER = 'SET_BROADCAST_PROVIDER';
+export const ADD_PLACE = 'ADD_PLACE';
 
 export const BroadcastProvider = {
   SPOTIFY: 'SPOTIFY',
@@ -36,4 +37,8 @@ export function setLyricsProvider(lyricsProvider) {
 
 export function setBroadcastProvider(broadcastProvider) {
   return { type: SET_BROADCAST_PROVIDER, broadcastProvider }
+};
+
+export function addPlace(place) {
+  return { type: ADD_PLACE, place }
 };

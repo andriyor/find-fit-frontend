@@ -39,5 +39,14 @@ export const mailFolderListItems = (
         <ListItemText primary="Organize album" />
       </ListItem>
 
+
+      <Link to="/registration" style={{ textDecoration: 'none' }}>
+          <ListItem button>
+              <ListItemIcon>
+                  <InboxIcon />
+              </ListItemIcon>
+              <ListItemText primary="Find Fit" />
+          </ListItem>
+      </Link>
   </div>
 );

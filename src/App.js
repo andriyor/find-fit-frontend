@@ -23,6 +23,7 @@ class App extends React.Component {
     return (
       <MiniDrawer>
         <div>
+
             <div style={{position: 'absolute', marginTop: '100px', right: "30px", float: 'right', zIndex: '99999', background: "white"}}>
                 <EventInfo/>
             </div>
@@ -40,7 +41,8 @@ class App extends React.Component {
 
         <SimpleMap/>
         </div>
-          <LoginAuthorization />
+
+
       </MiniDrawer>
     );
   }

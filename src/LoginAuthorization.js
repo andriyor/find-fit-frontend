@@ -11,6 +11,7 @@ import TextField from '@material-ui/core/TextField';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import Button from '@material-ui/core/Button';
+import ControlledOpenSelect from './ControlledOpenSelect'
 
 import axios from 'axios';
 
@@ -66,7 +67,8 @@ class LoginAuthorization extends React.Component {
 
     render() {
         const { classes } = this.props;
-
+        const sex = [{key: 1, value: 1, text: 'male'}, {key: 2, value: 2, text: 'female'}]
+        const kindOfSport = [{key: 1, value: '1', text: 'football'}, {key: 2, value: 2, text: 'run'}]
         return (
             <div className={classes.root}>
                 <TextField
@@ -78,6 +80,44 @@ class LoginAuthorization extends React.Component {
                         startAdornment: <InputAdornment position="start" style={{width: '150px'}}>John Smith</InputAdornment>,
                     }}
                 />
+                <TextField
+                    label="Enter goal"
+                    id="simple-start-adornment"
+                    className={classNames(classes.margin, classes.textField)}
+                    onChange={this.handleChange('name')}
+                    InputProps={{
+                        startAdornment: <InputAdornment position="start" style={{width: '150px'}}>Your goal</InputAdornment>,
+                    }}
+                />
+                <TextField
+                    label="Enter age"
+                    id="simple-start-adornment"
+                    className={classNames(classes.margin, classes.textField)}
+                    onChange={this.handleChange('name')}
+                    InputProps={{
+                        startAdornment: <InputAdornment position="start" style={{width: '150px'}}>Your age</InputAdornment>,
+                    }}
+                />
+                <TextField
+                    label="Enter height"
+                    id="simple-start-adornment"
+                    className={classNames(classes.margin, classes.textField)}
+                    onChange={this.handleChange('name')}
+                    InputProps={{
+                        startAdornment: <InputAdornment position="start" style={{width: '150px'}}>Your height</InputAdornment>,
+                    }}
+                />
+                <TextField
+                    label="Enter weight"
+                    id="simple-start-adornment"
+                    className={classNames(classes.margin, classes.textField)}
+                    onChange={this.handleChange('name')}
+                    InputProps={{
+                        startAdornment: <InputAdornment position="start" style={{width: '150px'}}>Your weight</InputAdornment>,
+                    }}
+                />
+                <ControlledOpenSelect title='Sex' items={sex}/>
+                <ControlledOpenSelect title='Kind Of Sport' items={kindOfSport}/>
                 <FormControl className={classNames(classes.margin, classes.textField)}>
                     <InputLabel htmlFor="adornment-password">Password</InputLabel>
                     <Input

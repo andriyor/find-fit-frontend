@@ -4,6 +4,7 @@ import SimpleMap from './SimpleMap';
 import ControlledOpenSelect from './ControlledOpenSelect';
 import DateAndTimePickers from './DateAndTimePickers'
 import InputAdornments from './InputAdornments'
+import LoginAuthorization from './LoginAuthorization'
 
 
 // import RadioButtonsGroup from './RadioButtonsGroup';
@@ -29,14 +30,16 @@ class App extends React.Component {
                 <InputAdornments/>
                 <DateAndTimePickers style={{marginLeft: '20px'}}/>
             </div>
-            <div style={{display: 'flex', color: 'red'}}>
+            <div style={{display: 'flex'}}>
                 <ControlledOpenSelect title='Age' items={ages}/>
                 <ControlledOpenSelect title='Sex' items={sex}/>
                 <DateAndTimePickers label='Start'/>
                 <DateAndTimePickers label='End'/>
             </div>
+
         <SimpleMap/>
         </div>
+          <LoginAuthorization />
       </MiniDrawer>
     );
   }

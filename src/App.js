@@ -4,22 +4,23 @@ import SimpleMap from './SimpleMap';
 import ControlledOpenSelect from './ControlledOpenSelect';
 import DateAndTimePickers from './DateAndTimePickers'
 import InputAdornments from './InputAdornments'
-import LoginAuthorization from './LoginAuthorization'
 import EventInfo from './EventInfo'
 
 
 import { connect } from 'react-redux'
+import axios from "axios/index";
 
 
 class App extends React.Component {
+    state ={
+        sportsType: []
+    }
+    getSportType = () => {axios.get('/api/sport_type').then(function (response) {
+        this.setState({sportsType: response.request.response});
+        console.log(response.request.response);
+    })}
   render() {
-
-    // const ages = [{key: 1, value: 10, text: 'Ten-twenty'},
-    //               {key: 2, value: 20, text: 'Twenty-thirty'},
-    //               {key: 3, value: 30, text: 'Ten-twenty'}];
-
-    const sex = [{key: 1, value: 1, text: 'male'}, {key: 2, value: 2, text: 'female'}]
-
+       this.getSportType()
     return (
       <MiniDrawer>
         <div>
@@ -33,8 +34,7 @@ class App extends React.Component {
                 <DateAndTimePickers style={{marginLeft: '20px'}}/>
             </div>
             <div style={{display: 'flex'}}>
-                {/*<ControlledOpenSelect title='Age' items={ages}/>*/}
-                <ControlledOpenSelect title='Sex' items={sex}/>
+                <ControlledOpenSelect title='Kind of sport' items={this.state.sportsType}/>
                 <DateAndTimePickers label='Start'/>
                 <DateAndTimePickers label='End'/>
             </div>

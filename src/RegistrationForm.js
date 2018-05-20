@@ -33,16 +33,28 @@ const styles = theme => ({
 
 const api = 'https://5dab894d.ngrok.io';
 
-class LoginAuthorization extends React.Component {
+class RegistrationForm extends React.Component {
     state = {
+        sex: '',
+        sport: '',
         password: '',
         name: '',
         showPassword: false,
+        sportsType: []
     };
 
     handleChange = prop => event => {
         this.setState({ [prop]: event.target.value });
     };
+
+
+    handleChangeSex = prop => {
+        this.setState({ sex: prop});
+    };
+    handleChangeSport = prop => {
+        this.setState({ sport: prop});
+    };
+
 
     handleMouseDownPassword = event => {
         event.preventDefault();
@@ -53,8 +65,14 @@ class LoginAuthorization extends React.Component {
     };
 
     handleSubmit = () => {
-        axios.post('/api/login', {
+        axios.post('/api/registration', {
             name: this.state.name,
+            sport_typ: this.state.sport,
+            number: this.state.number,
+            link: this.state.link,
+            sex: this.state.sex,
+            age: this.state.age,
+            goal: this.state.goal
           })
           .then(function (response) {
             console.log(response);
@@ -65,10 +83,20 @@ class LoginAuthorization extends React.Component {
         console.log(this.state.password, this.state.name)
     }
 
+
+
+    getSportType = () => {axios.get('/api/sport_type').then(function (response) {
+        this.setState({sportsType: response.request.response})
+        console.log(response.request.response);
+    })}
     render() {
+        this.getSportType();
         const { classes } = this.props;
         const sex = [{key: 1, value: 1, text: 'male'}, {key: 2, value: 2, text: 'female'}]
-        const kindOfSport = [{key: 1, value: '1', text: 'football'}, {key: 2, value: 2, text: 'run'}]
+        // const kindOfSport = [{key: 1, value: '1', text: 'football'}, {key: 2, value: 2, text: 'run'}]
+        // const kindOfSport = this.getSportType();
+        // const kindOfSport = [{"name":"walk"},{"name":"football"},{"name":"valeboll"},{"name":"run"},{"name":"swiming"}];
+        const kindOfSport = this.state.sportsType;
         return (
             <div className={classes.root}>
                 <TextField
@@ -84,7 +112,7 @@ class LoginAuthorization extends React.Component {
                     label="Enter goal"
                     id="simple-start-adornment"
                     className={classNames(classes.margin, classes.textField)}
-                    onChange={this.handleChange('name')}
+                    onChange={this.handleChange('goal')}
                     InputProps={{
                         startAdornment: <InputAdornment position="start" style={{width: '150px'}}>Your goal</InputAdornment>,
                     }}
@@ -93,7 +121,7 @@ class LoginAuthorization extends React.Component {
                     label="Enter age"
                     id="simple-start-adornment"
                     className={classNames(classes.margin, classes.textField)}
-                    onChange={this.handleChange('name')}
+                    onChange={this.handleChange('age')}
                     InputProps={{
                         startAdornment: <InputAdornment position="start" style={{width: '150px'}}>Your age</InputAdornment>,
                     }}
@@ -102,7 +130,7 @@ class LoginAuthorization extends React.Component {
                     label="Enter height"
                     id="simple-start-adornment"
                     className={classNames(classes.margin, classes.textField)}
-                    onChange={this.handleChange('name')}
+                    onChange={this.handleChange('height')}
                     InputProps={{
                         startAdornment: <InputAdornment position="start" style={{width: '150px'}}>Your height</InputAdornment>,
                     }}
@@ -111,13 +139,13 @@ class LoginAuthorization extends React.Component {
                     label="Enter weight"
                     id="simple-start-adornment"
                     className={classNames(classes.margin, classes.textField)}
-                    onChange={this.handleChange('name')}
+                    onChange={this.handleChange('weight')}
                     InputProps={{
                         startAdornment: <InputAdornment position="start" style={{width: '150px'}}>Your weight</InputAdornment>,
                     }}
                 />
-                <ControlledOpenSelect title='Sex' items={sex}/>
-                <ControlledOpenSelect title='Kind Of Sport' items={kindOfSport}/>
+                <ControlledOpenSelect title='Sex' items={sex} onSelectChange={this.handleChangeSex}/>
+                <ControlledOpenSelect title='Kind Of Sport' items={this.state.sportsType} onSelectChange={this.handleChangeSport}/>
                 <FormControl className={classNames(classes.margin, classes.textField)}>
                     <InputLabel htmlFor="adornment-password">Password</InputLabel>
                     <Input
@@ -138,7 +166,7 @@ class LoginAuthorization extends React.Component {
                         }
                     />
                     <Button variant="raised" onClick={this.handleSubmit} className={classes.button}>
-                        Default
+                        Submit
                     </Button>
                 </FormControl>
             </div>
@@ -146,8 +174,8 @@ class LoginAuthorization extends React.Component {
     }
 }
 
-LoginAuthorization.propTypes = {
+RegistrationForm.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(LoginAuthorization);
+export default withStyles(styles)(RegistrationForm);

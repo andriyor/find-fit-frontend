@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import App from './App';
 import './index.css';
-import RegistrationInApp from './RegistrationInApp'
+import Registration from './Registration'
 
 import configureStore from './configureStore'
 const { persistor, store } = configureStore()
@@ -16,7 +16,7 @@ ReactDOM.render(
       <Router>
         <div>
             <Route exact path="/" component={App} />
-            <Route path="/registration" component={RegistrationInApp} />
+            <Route path="/registration" component={Registration} />
         </div>
       </Router>
     </PersistGate>

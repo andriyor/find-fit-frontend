@@ -19,13 +19,15 @@ const styles = theme => ({
 
 class ControlledOpenSelect extends React.Component {
     state = {
-        age: '',
+        value: '',
         open: false,
     };
 
     handleChange = event => {
         this.setState({ [event.target.name]: event.target.value });
+        this.props.onSelectChange(event.target.value);
     };
+
 
     handleClose = () => {
         this.setState({ open: false });
@@ -37,7 +39,7 @@ class ControlledOpenSelect extends React.Component {
 
     render() {
         const { classes, items } = this.props;
-        const menuitems = items.map(obj => <MenuItem key={obj.key} value={obj.value}> {obj.text} </MenuItem> )
+        const menuitems = items.map(obj => <MenuItem key={obj.name} value={obj.name}> {obj.name} </MenuItem> )
         
         return (
             <form autoComplete="off">
